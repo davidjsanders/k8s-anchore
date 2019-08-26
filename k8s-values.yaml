@@ -28,8 +28,8 @@ ingress:
   # Use the following paths for GCE/ALB ingress controller
   # apiPath: /v1/*
   # uiPath: /*
-  # apiPath: /v1/
-  # uiPath: /
+  apiPath: /v1/
+  uiPath: /
   # Uncomment the following lines to bind on specific hostnames
   apiHosts:
     - anchore-api.13.90.96.43.xip.com
