@@ -11,5 +11,4 @@ spec:
     port: 5432
   selector:
     app: postgres
-    role: master
   type: NodePort
