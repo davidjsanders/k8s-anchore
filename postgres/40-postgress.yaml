@@ -37,14 +37,14 @@ spec:
         name: postgres
         ports:
         - containerPort: 5432
-        readinessProbe:
-          tcpSocket:
-            port: 5432
-          periodSeconds: 10
-          timeoutSeconds: 5
-          successThreshold: 2
-          failureThreshold: 5
-          initialDelaySeconds: 60
+        # readinessProbe:
+        #   tcpSocket:
+        #     port: 5432
+        #   periodSeconds: 10
+        #   timeoutSeconds: 5
+        #   successThreshold: 2
+        #   failureThreshold: 5
+        #   initialDelaySeconds: 60
         resources:
           limits:
             cpu: 2
