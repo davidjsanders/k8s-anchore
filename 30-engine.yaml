@@ -1,0 +1,51 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: anchore-engine-deployment
+  labels:
+    app: anchore
+  namespace: anchore
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: anchore
+  template:
+    metadata:
+      labels:
+        app: anchore
+        role: master
+    spec:
+      hostAliases:
+      - ip: "10.70.1.6"
+        hostnames:
+        - "k8s-master"
+      containers:
+      - name: engine
+        env:
+        - name: ANCHORE_ENDPOINT_HOSTNAME
+          value: engine-api
+        - name: ANCHORE_DB_HOST
+          value: anchore-db
+        - name: ANCHORE_DB_PASSWORD
+          value: mysecretpassword
+        image: anchore/anchore-engine:v0.4.2
+        ports:
+        - containerPort: 8228
+        resources:
+          limits:
+            cpu: 1
+            memory: 3000Mi
+          requests:
+            cpu: .5
+            memory: 1500Mi
+        # securityContext:
+        #   privileged: true
+        #   runAsUser: 0
+        #   allowPrivilegeEscalation: true
+        volumeMounts:
+        - mountPath: /var/lib/docker
+          name: docker
+        - mountPath: /etc/docker/config
+          name: daemon-json
