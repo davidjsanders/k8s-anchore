@@ -15,7 +15,7 @@ spec:
     - ReadWriteOnce
   storageClassName: ${storageclass}
   local:
-    path: /datadrive/postgre-sql-data
+    path: /datadrive/postgres-data
   nodeAffinity:
     required:
       nodeSelectorTerms:
