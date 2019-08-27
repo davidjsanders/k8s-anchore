@@ -49,7 +49,7 @@ then
 fi
 
 short_banner "Load YAML manifests"
-yaml_files=$(ls -1 ${datapath:-/datadrive/azadmin/anchore}/[0-9]*.yaml)
+yaml_files=$(ls -1 ${datapath:-/datadrive/azadmin/k8s-anchore}/[0-9]*.yaml)
 for file in $yaml_files
 do
     short_banner "Applying yaml for: $file"
