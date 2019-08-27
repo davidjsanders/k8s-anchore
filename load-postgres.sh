@@ -2,7 +2,7 @@
 # -------------------------------------------------------------------
 #
 # Module:         k8s-jenkins
-# Submodule:      load-postgre-sql.sh
+# Submodule:      load-postgres.sh
 # Environments:   all
 # Purpose:        Bash shell script to apply any yaml files found in
 #                 the jenkins directory. 
@@ -32,7 +32,7 @@
 # Include the banner function for logging purposes (see
 # templates/banner.sh)
 #
-source ${datapath:-/datadrive/azadmin/k8s-jenkins}/banner.sh
+source ${datapath:-/datadrive/azadmin/k8s-anchore}/banner.sh
 error_list=""
 
 log_banner "load-postgre-sql.sh" "Load postgre-sql"
@@ -49,7 +49,7 @@ then
 fi
 
 short_banner "Load YAML manifests"
-yaml_files=$(ls -1 ${datapath:-/datadrive/azadmin/k8s-anchore}/[0-9]*.yaml)
+yaml_files=$(ls -1 ${datapath:-/datadrive/azadmin/k8s-anchore/postgres}/[0-9]*.yaml)
 for file in $yaml_files
 do
     short_banner "Applying yaml for: $file"
