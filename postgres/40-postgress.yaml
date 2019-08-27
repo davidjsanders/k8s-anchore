@@ -25,6 +25,9 @@ spec:
     spec:
       containers:
       - image: k8s-master:32080/postgres:11.5-alpine
+        envFrom:
+          - configMapRef:
+              name: postgres-config
         imagePullPolicy: IfNotPresent
         livenessProbe:
           tcpSocket:
