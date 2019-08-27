@@ -52,14 +52,14 @@ spec:
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         volumeMounts:
-        - mountPath: /var/lib/postgre-sql/data
-          name: postgre-sql
+        - mountPath: /var/lib/postgresql/data
+          name: postgres-data
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 30
       volumes:
-      - name: postgre-sql
+      - name: postgres-data
         persistentVolumeClaim:
           claimName: postgre-sql-pvc
