@@ -4,10 +4,10 @@ apiVersion: v1
 metadata:
   labels:
     type: ${storageclass}
-    app: postgreSQL
-    role: postgreSQL-data
-  name: postgreSQL-pv
-  namespace: postgreSQL
+    app: postgre-sql
+    role: postgre-sql-data
+  name: postgre-sql-pv
+  namespace: postgre-sql
 spec:
   capacity:
     storage: 50Gi
@@ -15,7 +15,7 @@ spec:
     - ReadWriteOnce
   storageClassName: ${storageclass}
   local:
-    path: /datadrive/postgreSQL-data
+    path: /datadrive/postgre-sql-data
   nodeAffinity:
     required:
       nodeSelectorTerms:

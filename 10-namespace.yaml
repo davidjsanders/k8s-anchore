@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: postgreSQL
+  name: postgre-sql
 spec:
   finalizers:
   - "kubernetes"
