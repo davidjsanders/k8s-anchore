@@ -17,7 +17,7 @@ postgresql:
   # This should be commented out if using an external endpoint.
   persistence:
     resourcePolicy: nil
-    size: 20Gi
+    size: 50Gi
 
 # Create an ingress resource for all external anchore engine services (API & Enterprise UI).
 # By default this chart is setup to use the NGINX ingress controller which needs to be installed & configured on your cluster.
