@@ -35,15 +35,20 @@
 source ${datapath:-/datadrive/azadmin/k8s-anchore}/banner.sh
 error_list=""
 
-log_banner "load-postgre-sql.sh" "Load postgre-sql"
+log_banner "load-postgres.sh" "Load postgres"
 
 short_banner "Checking mandatory variables"
-if [ -z "$domain_name" ]
+if [ -z "$domain_name" ] || \
+   [ -z "$postgres_db" ] || \
+   [ -z "$postgres_user" ] || \
+   [ -z "$postgres_password" ]
 then
-    short_banner "domain_name *NOT* found; unable to continue."
-    short_banner "Rerun setting domain_name=\".thedomain.com\" before running"
-    short_banner "Note: no . is added between the service name and the domain; "
-    short_banner "      include it if you need it, e.g. .mydomain.com"
+    short_banner "Mandatory variables were *NOT* found; unable to continue."
+    short_banner "The following env. vars. must be set:"
+    short_banner "  domain_name"
+    short_banner "  postgres_db"
+    short_banner "  postgres_user"
+    short_banner "  postgres_password"
     echo
     exit 1
 fi
@@ -55,6 +60,9 @@ do
     short_banner "Applying yaml for: $file"
     sed '
       s/\${domain_name}/'"${domain_name}"'/g;
+      s/\${postgres_db}/'"${postgres_db}"'/g;
+      s/\${postgres_user}/'"${postgres_user}"'/g;
+      s/\${postgres_password}/'"${postgres_password}"'/g;
       s/\${storageclass}/'"${storageclass:-local-storage}"'/g;
       s/\${selectorkey}/'"${selectorkey:-role}"'/g;
       s/\${selectorvalue}/'"${selectorvalue:-worker}"'/g;

@@ -2,9 +2,9 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   labels:
-    app: postgre-sql
-  name: postgre-sql-pvc
-  namespace: postgre-sql
+    app: postgres
+  name: postgres-pvc
+  namespace: postgres
 spec:
   storageClassName: ${storageclass}
   accessModes:
@@ -14,4 +14,4 @@ spec:
       storage: 50Gi
   selector: 
     matchLabels:
-      role: postgre-sql-data
+      role: postgres-data

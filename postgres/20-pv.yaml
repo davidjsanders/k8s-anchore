@@ -4,10 +4,10 @@ apiVersion: v1
 metadata:
   labels:
     type: ${storageclass}
-    app: postgre-sql
-    role: postgre-sql-data
-  name: postgre-sql-pv
-  namespace: postgre-sql
+    app: postgres
+    role: postgres-data
+  name: postgres-pv
+  namespace: postgres
 spec:
   capacity:
     storage: 50Gi
