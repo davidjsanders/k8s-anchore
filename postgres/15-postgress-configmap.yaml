@@ -6,6 +6,6 @@ metadata:
   labels:
     app: postgres
 data:
-  POSTGRES_DB: ${postgresdb}
-  POSTGRES_USER: ${postgresadmin}
-  POSTGRES_PASSWORD: ${postrespwd}
+  POSTGRES_DB: ${postgres_db}
+  POSTGRES_USER: ${postgres_user}
+  POSTGRES_PASSWORD: ${postres_password}
