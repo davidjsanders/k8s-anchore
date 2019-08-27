@@ -23,7 +23,7 @@ postgresql:
 # By default this chart is setup to use the NGINX ingress controller which needs to be installed & configured on your cluster.
 # To utilize a GCE/ALB ingress controller comment out the nginx annotations below, change ingress.class, edit path configurions as per the comments, & set API/UI services to use NodePort.
 ingress:
-  enabled: true
+  enabled: false
   labels: {}
   # Use the following paths for GCE/ALB ingress controller
   # apiPath: /v1/*
@@ -37,7 +37,7 @@ ingress:
     - anchore-ui.13.90.96.43.xip.com
   annotations:
     # kubernetes.io/ingress.class: gce
-    # kubernetes.io/ingress.class: nginx
+    kubernetes.io/ingress.class: traefik
     # nginx.ingress.kubernetes.io/ssl-redirect: "false"
     # kubernetes.io/ingress.allow-http: false
     # kubernetes.io/tls-acme: true
