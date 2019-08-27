@@ -2,7 +2,7 @@
 # -------------------------------------------------------------------
 #
 # Module:         k8s-jenkins
-# Submodule:      load-postgres.sh
+# Submodule:      load-postgreSQL.sh
 # Environments:   all
 # Purpose:        Bash shell script to apply any yaml files found in
 #                 the jenkins directory. 
@@ -35,7 +35,7 @@
 source ${datapath:-/datadrive/azadmin/k8s-jenkins}/banner.sh
 error_list=""
 
-log_banner "load-postgres.sh" "Load PostgreSQL"
+log_banner "load-postgreSQL.sh" "Load postgreSQL"
 
 short_banner "Checking mandatory variables"
 if [ -z "$domain_name" ]

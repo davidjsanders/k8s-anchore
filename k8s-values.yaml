@@ -1,16 +1,16 @@
 # Default values for anchore_engine chart.
 
-# Anchore engine has a dependency on Postgresql, configure here
-postgresql:
+# Anchore engine has a dependency on postgreSQL, configure here
+postgreSQL:
   # To use an external DB or Google CloudSQL in GKE, uncomment & set 'enabled: false'
-  # externalEndpoint, postgresUser, postgresPassword & postgresDatabase are required values for external postgres
+  # externalEndpoint, postgreSQLUser, postgreSQLPassword & postgreSQLDatabase are required values for external postgreSQL
   # enabled: false
-  postgresUser: anchoreengine
-  postgresPassword: anchore-postgres,123
-  postgresDatabase: anchore
+  postgreSQLUser: anchoreengine
+  postgreSQLPassword: anchore-postgreSQL,123
+  postgreSQLDatabase: anchore
 
-  # Specify an external (already existing) postgres deployment for use.
-  # Set to the host and port. eg. mypostgres.myserver.io:5432
+  # Specify an external (already existing) postgreSQL deployment for use.
+  # Set to the host and port. eg. mypostgreSQL.myserver.io:5432
   externalEndpoint: Null
 
   # Configure size of the persitant volume used with helm managed chart.
@@ -92,7 +92,7 @@ anchoreGlobal:
   # Configure the database connection within anchore-engine & enterprise-ui. This may get split into 2 different configurations based on service utilized.
   dbConfig:
     timeout: 120
-    # Use ssl, but the default postgresql config in helm's stable repo does not support ssl on server side, so this should be set for external dbs only for the time being
+    # Use ssl, but the default postgreSQL config in helm's stable repo does not support ssl on server side, so this should be set for external dbs only for the time being
     ssl: false
     connectionPoolSize: 30
     connectionPoolMaxOverflow: 100
@@ -377,18 +377,18 @@ anchoreEnterpriseGlobal:
   # Create this secret with the following command - kubectl create secret docker-registry anchore-dockerhub-creds --docker-server=docker.io --docker-username=<USERNAME> --docker-password=<PASSWORD> --docker-email=<EMAIL_ADDRESS>
   imagePullSecretName: anchore-enterprise-pullcreds
 
-# Configure the second postgres database instance for the enterprise feeds service.
+# Configure the second postgreSQL database instance for the enterprise feeds service.
 # Only utilized if anchoreEnterpriseGlobal.enabled: true
 anchore-feeds-db:
   # To use an external DB or Google CloudSQL, uncomment & set 'enabled: false'
-  # externalEndpoint, postgresUser, postgresPassword & postgresDatabase are required values for external postgres
+  # externalEndpoint, postgreSQLUser, postgreSQLPassword & postgreSQLDatabase are required values for external postgreSQL
   # enabled: false
-  postgresUser: anchoreengine
-  postgresPassword: anchore-postgres,123
-  postgresDatabase: anchore-feeds
+  postgreSQLUser: anchoreengine
+  postgreSQLPassword: anchore-postgreSQL,123
+  postgreSQLDatabase: anchore-feeds
 
-  # Specify an external (already existing) postgres deployment for use.
-  # Set to the host and port. eg. mypostgres.myserver.io:5432
+  # Specify an external (already existing) postgreSQL deployment for use.
+  # Set to the host and port. eg. mypostgreSQL.myserver.io:5432
   externalEndpoint: Null
 
   # Configure size of the persitant volume used with helm managed chart.
@@ -399,7 +399,7 @@ anchore-feeds-db:
 
 # Configure & enable the Anchore Enterprise on-prem feeds service.
 anchoreEnterpriseFeeds:
-  # If enabled is set to false, set anchore-feeds-db.enabled to false to ensure that helm doesn't stand up a unneccessary postgres instance.
+  # If enabled is set to false, set anchore-feeds-db.enabled to false to ensure that helm doesn't stand up a unneccessary postgreSQL instance.
   enabled: true
 
   # Set extra environment variables. These will be set on all feeds containers.
@@ -414,7 +414,7 @@ anchoreEnterpriseFeeds:
   # Configure the database connection within anchore-engine & enterprise-ui. This may get split into 2 different configurations based on service utilized.
   dbConfig:
     timeout: 120
-    # Use ssl, but the default postgresql config in helm's stable repo does not support ssl on server side, so this should be set for external dbs only for the time being
+    # Use ssl, but the default postgreSQL config in helm's stable repo does not support ssl on server side, so this should be set for external dbs only for the time being
     ssl: false
     connectionPoolSize: 30
     connectionPoolMaxOverflow: 100

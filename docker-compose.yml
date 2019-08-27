@@ -93,11 +93,11 @@ services:
     - anchore-scratch:/analysis_scratch
     command: ["anchore-manager", "service", "start", "analyzer"]
   anchore-db:
-    image: "postgres:9"
+    image: "postgreSQL:9"
     volumes:
-    - anchore-db-volume:/var/lib/postgresql/data
+    - anchore-db-volume:/var/lib/postgreSQL/data
     environment:
-    - POSTGRES_PASSWORD=mysecretpassword
+    - postgreSQL_PASSWORD=mysecretpassword
     expose:
     - 5432
     logging:
