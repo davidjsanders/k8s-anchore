@@ -61,24 +61,26 @@ sed '
     s/\${postgres_port}/'"${postgres_port:-5432}"'/g;
     s/\${admin_user}/'"${admin_user:-azadmin}"'/g;
     s/\${admin_email}/'"${admin_email:-foo@bar.com}"'/g;
-' k8s-vaules.yaml > /tmp/k8s-values.yaml
+' k8s-values.yaml > /tmp/k8s-values.yaml
 ret_stat="$?"
 if [ "$ret_stat" != "0" ]; 
 then 
     short_banner "*****"; 
-    short_banner "Error applying $file - skipping"; 
+    short_banner "Error substituting values"; 
     short_banner "*****"; 
-    error_list=$error_list" ${file}---${ret_stat}"
+    exit 1
 fi
 
 short_banner "Helm install anchore-engine"
 helm install --name anchore -f /tmp/k8s-values.yaml stable/anchore-engine
-
-short_banner "Error list:"
-for err in $error_list
-do
-  echo ">>> ERROR: $err"
-done
+ret_stat="$?"
+if [ "$ret_stat" != "0" ]; 
+then 
+    short_banner "*****"; 
+    short_banner "Error in helm install"; 
+    short_banner "*****"; 
+    exit 1
+fi
 
 short_banner "Done."
 echo
