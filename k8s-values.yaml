@@ -5,9 +5,9 @@ postgres:
   # To use an external DB or Google CloudSQL in GKE, uncomment & set 'enabled: false'
   # externalEndpoint, postgre-sqlUser, postgre-sqlPassword & postgre-sqlDatabase are required values for external postgres
   # enabled: false
-  # postgre-sqlUser: anchoreengine
-  # postgre-sqlPassword: anchore-postgres,123
-  # postgre-sqlDatabase: anchore
+  # postgrelUser: anchoreengine
+  # postgresPassword: anchore-postgres,123
+  # postgresDatabase: anchore
 
   # Specify an external (already existing) postgres deployment for use.
   # Set to the host and port. eg. mypostgre-sql.myserver.io:5432
