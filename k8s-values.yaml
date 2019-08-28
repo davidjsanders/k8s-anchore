@@ -5,13 +5,14 @@ postgres:
   # To use an external DB or Google CloudSQL in GKE, uncomment & set 'enabled: false'
   # externalEndpoint, postgre-sqlUser, postgre-sqlPassword & postgre-sqlDatabase are required values for external postgres
   # enabled: false
-  postgre-sqlUser: anchoreengine
-  postgre-sqlPassword: anchore-postgres,123
-  postgre-sqlDatabase: anchore
+  # postgre-sqlUser: anchoreengine
+  # postgre-sqlPassword: anchore-postgres,123
+  # postgre-sqlDatabase: anchore
 
   # Specify an external (already existing) postgres deployment for use.
   # Set to the host and port. eg. mypostgre-sql.myserver.io:5432
-  externalEndpoint: Null
+  # externalEndpoint: Null
+  externalEndpoint: postgres-service.postgres.svc.cluster.local:5432
 
   # Configure size of the persitant volume used with helm managed chart.
   # This should be commented out if using an external endpoint.
