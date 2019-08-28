@@ -1,32 +1,10 @@
-#  externalEndpoint: postgres-service.postgres.svc.cluster.local:5432
-
-# Default values for anchore_engine chart.
-
-# Anchore engine has a dependency on Postgresql, configure here
 postgresql:
-  # To use an external DB or Google CloudSQL in GKE, uncomment & set 'enabled: false'
-  # externalEndpoint, postgresUser, postgresPassword & postgresDatabase are required values for external postgres
   enabled: false
-
-  # Specify an external (already existing) postgres deployment for use.
-  # Set to the host and port. eg. mypostgres.myserver.io:5432
   externalEndpoint: postgres-service.postgres.svc.cluster.local:5432
 
-# Google CloudSQL support in GKE via gce-proxy
-cloudsql:
-  enabled: false
-
-# Create an ingress resource for all external anchore engine services (API & Enterprise UI).
-# By default this chart is setup to use the NGINX ingress controller which needs to be installed & configured on your cluster.
-# To utilize a GCE/ALB ingress controller comment out the nginx annotations below, change ingress.class, edit path configurions as per the comments, & set API/UI services to use NodePort.
-ingress:
-  enabled: false
-
-# Global configuration shared by all anchore-engine services.
 anchoreGlobal:
-  # Image used for all anchore engine deployments (excluding enterprise components).
-  image: docker.io/anchore/anchore-engine:v0.4.2
-  imagePullPolicy: IfNotPresent
+  # image: docker.io/anchore/anchore-engine:v0.4.2
+  # imagePullPolicy: IfNotPresent
 
   # Add additionnal labels to all kubernetes resources
   labels: {}
