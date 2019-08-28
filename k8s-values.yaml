@@ -384,19 +384,19 @@ anchore-feeds-db:
   # To use an external DB or Google CloudSQL, uncomment & set 'enabled: false'
   # externalEndpoint, postgre-sqlUser, postgre-sqlPassword & postgre-sqlDatabase are required values for external postgres
   # enabled: false
-  postgre-sqlUser: anchoreengine
-  postgre-sqlPassword: anchore-postgres,123
-  postgre-sqlDatabase: anchore-feeds
+  # postgre-sqlUser: anchoreengine
+  # postgre-sqlPassword: anchore-postgres,123
+  # postgre-sqlDatabase: anchore-feeds
 
   # Specify an external (already existing) postgres deployment for use.
   # Set to the host and port. eg. mypostgre-sql.myserver.io:5432
-  externalEndpoint: Null
+  externalEndpoint: postgres-service.postgres.svc.cluster.local:5432
 
   # Configure size of the persitant volume used with helm managed chart.
   # This should be commented out if using an external endpoint.
-  persistence:
-    resourcePolicy: nil
-    size: 20Gi
+  # persistence:
+  #   resourcePolicy: nil
+  #   size: 20Gi
 
 # Configure & enable the Anchore Enterprise on-prem feeds service.
 anchoreEnterpriseFeeds:
