@@ -82,5 +82,8 @@ then
     exit 1
 fi
 
+short_banner "Remove temporary files"
+rm -rf /tmp/k8s-values.yaml
+
 short_banner "Done."
 echo
