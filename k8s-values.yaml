@@ -383,7 +383,7 @@ anchoreEnterpriseGlobal:
 anchore-feeds-db:
   # To use an external DB or Google CloudSQL, uncomment & set 'enabled: false'
   # externalEndpoint, postgre-sqlUser, postgre-sqlPassword & postgre-sqlDatabase are required values for external postgres
-  # enabled: false
+  enabled: false
   # postgre-sqlUser: anchoreengine
   # postgre-sqlPassword: anchore-postgres,123
   # postgre-sqlDatabase: anchore-feeds
