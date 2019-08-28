@@ -16,9 +16,9 @@ postgres:
 
   # Configure size of the persitant volume used with helm managed chart.
   # This should be commented out if using an external endpoint.
-  persistence:
-    resourcePolicy: nil
-    size: 50Gi
+  #persistence:
+  #  resourcePolicy: nil
+  #  size: 50Gi
 
 # Create an ingress resource for all external anchore engine services (API & Enterprise UI).
 # By default this chart is setup to use the NGINX ingress controller which needs to be installed & configured on your cluster.
