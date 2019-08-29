@@ -1,6 +1,6 @@
 postgresql:
   enabled: false
-  externalEndpoint: ${postgres_endpoint}:${postgres_port} #postgres-service.postgres.svc.cluster.local:5432
+  externalEndpoint: ${postgres_endpoint}:${postgres_port}
   postgresUser: ${postgres_user}
   postgresPassword: ${postgres_password}
   postgresDatabase: ${postgres_db}
